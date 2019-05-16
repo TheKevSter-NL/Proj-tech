@@ -1,0 +1,23 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "install package json",
+  "main": "index.js",
+  "scripts": {
+    "start": "node",
+    "dev": "nodemon index.js"
+  },
+  "author": "Kevin Curi",
+  "license": "ISC",
+  "dependencies": {
+    "boilerplate": "^0.6.1",
+    "concat-stream": "^2.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "handlebars": "^4.1.2",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}

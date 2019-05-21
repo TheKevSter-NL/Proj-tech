@@ -5,20 +5,37 @@ const app = express()
 const port = 3000
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+//view Engine
 app.set('view engine', 'ejs')
 app.set('views', 'view')
-app.use(express.static('static'));
+
+// body parser middelware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded) 
-
-app.post('/users/add', function(reg, res) {
-  console.log('FORM gestuurd')
-
-});
-
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+// Set Static path
+app.use(express.static(path.join(__dirname, 'static')))
 
 
+
+var users = [{
+
+    in: 1,
+    first_name: 'Axel',
+    studenten_nummer: 123456,
+  
+
+  }
+
+]
+
+
+// app.post('/users/add', function (reg, res) {
+//   console.log('FORM SUCCES')
+
+// });
 
 
 
@@ -37,9 +54,11 @@ app.get("/setting", setting)
 
 
 
-app.post('/', function(req, res) {
+
+app.post('/', function (req, res) {
   res.send('Got a POST request')
 })
+
 function start(req, res) {
   res.render('pages/start.ejs', {
     title: "start"
@@ -48,9 +67,19 @@ function start(req, res) {
 
 function register(req, res) {
   res.render('pages/register.ejs', {
-    title: "register"
+    title: "register",
+    users: users
   });
 }
+app.post('/users/add', function (req, res) {
+  console.log(req.body.first_name);
+  // var newUser = {
+  //   first_name: req.body.firstname
+  // }
+  // console.log(newUser);
+});
+
+
 function inloggen(req, res) {
   res.render('pages/inloggen.ejs', {
     title: "inloggen"
@@ -80,9 +109,11 @@ function profile(req, res) {
     title: "profile"
   });
 }
+
 function userprofile(req, res) {
   res.render('pages/userprofile.ejs', {
-    title: "userprofile"
+    title: "userprofile",
+    users: users
   });
 }
 
@@ -98,7 +129,10 @@ function setting(req, res) {
     title: "setting"
   });
 }
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.status(404).render('not-found');
 });
 
+app.listen(port, function () {
+  console.log(`Server started on port 3000`);
+})

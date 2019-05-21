@@ -1,14 +1,31 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const path = require('path');
 const app = express()
 const port = 3000
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 app.set('view engine', 'ejs')
 app.set('views', 'view')
 app.use(express.static('static'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded) 
+
+app.post('/users/add', function(reg, res) {
+  console.log('FORM gestuurd')
+
+});
 
 
-app.get("/", home),
+
+
+
+
+app.get("/", start)
+app.get("/index", home)
+app.get("/register", register)
+app.get("/inloggen", inloggen)
 app.get("/chats", chats)
 app.get("/profile", profile)
 app.get("/edit", edit)
@@ -18,13 +35,27 @@ app.get("/setting", setting)
 
 
 
-app.use(function(req, res, next) {
-  res.status(404).render('not-found');
-});
+
 
 app.post('/', function(req, res) {
   res.send('Got a POST request')
 })
+function start(req, res) {
+  res.render('pages/start.ejs', {
+    title: "start"
+  });
+}
+
+function register(req, res) {
+  res.render('pages/register.ejs', {
+    title: "register"
+  });
+}
+function inloggen(req, res) {
+  res.render('pages/inloggen.ejs', {
+    title: "inloggen"
+  });
+}
 
 function home(req, res) {
   res.render('pages/index.ejs', {
@@ -67,3 +98,7 @@ function setting(req, res) {
     title: "setting"
   });
 }
+app.use(function(req, res, next) {
+  res.status(404).render('not-found');
+});
+

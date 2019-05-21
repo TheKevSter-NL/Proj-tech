@@ -16,23 +16,6 @@ body {
   margin: 0;
 }
 
-/*Import Google Fonts*/
-/****************************/
-/* Preset codes toepasbaar voor elke pagina*/
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background-color: #f6f6f6;
-  font-family: 'Raleway', sans-serif;
-}
-
-body {
-  background-color: #f6f6f6;
-  margin: 0;
-}
-
 ul {
   text-decoration: none;
   margin: 0;
@@ -62,8 +45,10 @@ button {
 
 /****************************/
 /* Headings font en kleur */
-h1, h2, h3 {
-  font-family: 'Raleway', sans-serif;
+h1,
+h2,
+h3 {
+  
   color: #000;
   font-weight: bold;
 }
@@ -85,7 +70,7 @@ h3 {
 main {
   max-width: 50em;
   margin-bottom: 5em;
-  background-color: #f6f6f6;
+  background-color: unset;
   margin: 0 auto;
 }
 
@@ -169,13 +154,17 @@ header img {
   padding: 0.5em;
 }
 
-header li:nth-child(2) a img, header li:nth-child(3) a img, header li:last-child img {
+header li:nth-child(2) a img,
+header li:nth-child(3) a img,
+header li:last-child img {
   padding: 0.5em;
   width: 3.3em;
   margin: auto;
 }
 
-header li:nth-child(2) a, header li:nth-child(3) a, header li:last-child a {
+header li:nth-child(2) a,
+header li:nth-child(3) a,
+header li:last-child a {
   /*! background-color: #00D56E; */
   /*! border-radius: 50%; */
   display: inherit;
@@ -186,7 +175,9 @@ header li:nth-child(2) a, header li:nth-child(3) a, header li:last-child a {
   z-index: 999;
 }
 
-header li:nth-child(2) a:hover, header li:nth-child(3) a:hover, header li:last-child a:hover {
+header li:nth-child(2) a:hover,
+header li:nth-child(3) a:hover,
+header li:last-child a:hover {
   /*! background-color: #2800A0; */
 }
 
@@ -196,10 +187,13 @@ legend {
   font-weight: bold;
   font-size: 1.3em;
   width: 100%;
+  font-family: "smart cherie";
+  color: #fff;
+  font-size: 2em;
 }
 
 form button {
-  background-color: #FF3268;
+  background-color: #FF6E70;
   border-radius: 1em;
   padding: 10px 25px;
   color: #fff;
@@ -207,10 +201,11 @@ form button {
   box-shadow: 2px 3px #000;
   transition: 0.3s ease 0s;
   border-color: transparent;
+  cursor: pointer;
 }
 
 form button:hover {
-  background-color: #A72044;
+  background-color: #D4595B;
 }
 
 /****************************/
@@ -397,7 +392,8 @@ main ul li article footer ul li:nth-child(1) button:focus,
   background-image: url(" images/iconen/vinkje.svg");
   background-color: #fff;
 } */
-main footer ul, #index main footer ul {
+main footer ul,
+#index main footer ul {
   display: grid;
   grid-template-columns: 1fr 1fr !important;
   text-align: center;
@@ -438,6 +434,7 @@ main footer li {
 #profile section,
 #userprofile section {
   background-color: #fff;
+  overflow: hidden;
 }
 
 #profile section hr,
@@ -659,6 +656,151 @@ main footer li {
   margin-top: 8px;
 }
 
+/*********START*************/
+#start {
+  background-image: url("images/afbeeldingen/premium2.jpeg");
+  background-color: unset;
+  background-size: cover;
+  min-height: calc(100vh - 0px);
+  position: relative;
+  z-index: 1;
+  background-position: top;
+}
+
+#start::after {
+  content: "";
+  background: #00000080;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+#start header{
+  display: none;
+}
+#start main {
+  padding: 20% 0;
+  margin-bottom: 0;
+  min-height: calc(100vh - 0px);
+  max-width: 25em;
+}
+
+#start section {
+  text-align: center;
+}
+
+#start img {
+  max-width: 10em;
+  margin-top: 5em;
+}
+
+#start h1, .inloggen h1 {
+  text-align: center;
+  background-color: transparent;
+  font-size: 4em;
+  font-family: smart cherie;
+}
+
+
+#start section p:nth-child(3) > a {
+  display: block;
+  background-color: #FF6E70;
+  width: 5em;
+  margin: 0 auto;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1em;
+  padding: 15px;
+  margin-top: 8px;
+  font-size: 2em;
+}
+
+#start.inloggen section p:nth-child(3) > a {
+
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  margin: 0 auto;
+      margin-top: 0px;
+  color: #fff;
+  text-decoration: underline;
+  border-radius: 1em;
+  padding: 15px;
+  margin-top: 8px;
+  font-size: 1em;
+  text-align: left;
+
+}
+.inloggen main {
+
+  padding: 1px 0 !important;
+
+}
+.inloggen form {
+
+  text-align: left;
+
+  padding: 15px;
+}
+.inloggen form i {
+  display: flex;
+  padding: 0 0 2em;
+}
+
+.inloggen main hr {
+  border-color: #f6f6f6;
+  width: 100%;
+  margin-bottom: 2.5em;
+}
+
+.inloggen main label {
+  display: grid;
+  padding: 1em 0em;
+  font-weight: bold;
+  color: #fff;
+}
+
+
+.inloggen main fieldset {
+  color: transparent;
+}
+
+.inloggen main .wwvergeten {
+  padding-bottom: 2.5em;
+}
+
+.inloggen main fieldset p {
+  color: #3e3e3e;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.inloggen input {
+  padding: 0.9em;
+  border-radius: 0.5em;
+  margin-top: 1.2em;
+  border-color: #000;
+  z-index: 2;
+  transition: all 0.5s;
+}
+
+.inloggen input:focus {
+  background-color: #bed4f1;
+  transform: scale(1.01, 1.01);
+}
+
+.inloggen input:invalid {
+  border-color: #FF9595;
+}
+
+.inloggen input:disabled {
+  border-color: #eee;
+  background-color: #f9f9f9;
+}
+
+/****************************/
 /****************************/
 /* FOOTER */
 footer {
@@ -687,14 +829,12 @@ footer p {
     text-align: center;
   }
 
-  main ul li, #index section:nth-child(4) ul li {
+  main ul li,
+  #index section:nth-child(4) ul li {
     /*! width: 33.33%; */
   }
 
-  #inloggen main, aside {
-    width: 100%;
-  }
-
+ 
   #verhaal section {
     max-width: 100%;
   }
@@ -729,23 +869,12 @@ footer p {
     display: unset;
   }
 
-  main ul li, #index section:nth-child(4) ul li {
+  main ul li,
+  #index section:nth-child(4) ul li {
     /*! width: 50%; */
   }
 
-  #inloggen main {
-    flex-direction: column;
-  }
 
-  #inloggen main section, #inloggen main aside {
-    width: 100%;
-    margin: 2em 0;
-  }
-
-  #inloggen main section, #inloggen main aside {
-    border-radius: 1em;
-    margin: 3em 0;
-  }
 
   #index main ul li {
     width: 100%;
@@ -763,14 +892,17 @@ footer p {
   #mobile-nav {
     display: block;
   }
+
   main {
     margin-bottom: 5em;
-}
+  }
 }
 
 /*tablets portrait mode*/
 @media (max-width:45em) {
-  main ul li article, #index main ul li article {
+
+  main ul li article,
+  #index main ul li article {
     max-width: 20em;
     margin: 0 auto;
   }

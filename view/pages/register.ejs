@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <% include ../partials/head.ejs %>
+</head>
+<body id="start" class="inloggen">
+    <!--Header begin-->
+    <header>
+        <!-- <% include ../partials/nav.ejs %> -->
+    </header>
+    <!--Header end-->
+    <main>
+
+        <section>
+            <form action="/users/add" method="POST">
+              <fieldset>
+                <legend>Registeren</legend>
+                <label> Voornaam
+                  <input type="name" name="voor_naam" placeholder="Voornaam" >
+                </label>
+                <label> Studentennummer
+                  <input type="name" name="studenten_nummer" placeholder="0000000" >
+                </label>
+                <label> Wachtwoord
+                    <input type="password" minlength="6" placeholder="minimaal 6 characters" >
+                    </label>
+              </fieldset>
+              <!-- <i>
+                  <a href="index.html">Wachtwoord vergeten?</a>
+                </i> -->
+              <button type="submit" value="submit">register</button>
+            </form>
+            
+            <p><a href="/register">Nog geen account? Klik hier </a></p>
+        </section>
+    </main>
+</body>
+</html>

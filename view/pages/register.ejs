@@ -16,14 +16,14 @@
               <fieldset>
                 <legend>Registeren</legend>
                 <label> Voornaam
-                  <input type="name" name="first_name" placeholder="Voornaam" >
+                  <input type="name" name="first_name" required  >
                 </label>
                 <label> Studentennummer
-                  <input type="name" name="studenten_nummer" placeholder="0000000" >
+                  <input type="text" name="studenten_nummer" required  >
                 </label>
-                <!-- <label> Wachtwoord
-                    <input type="password" minlength="6" placeholder="minimaal 6 characters" >
-                    </label> -->
+                <label> Wachtwoord
+                    <input type="password" name="password" minlength="6" placeholder="minimaal 6 characters" required >
+                    </label>
               </fieldset>
               <!-- <i>
                   <a href="index.html">Wachtwoord vergeten?</a>

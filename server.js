@@ -1,11 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path');
-const app = express()
 const port = 3000
+const expressValidator = require('express-validator');
 
 
 
+
+const app = express();
 //view Engine
 app.set('view engine', 'ejs')
 app.set('views', 'view')
@@ -18,6 +20,30 @@ app.use(bodyParser.urlencoded({
 // Set Static path
 app.use(express.static(path.join(__dirname, 'static')))
 
+//global Vars
+app.use(function(req, res, next){
+  res.locals.errors = null
+  next();
+});
+
+//Express Validator middleware
+app.use(expressValidator({
+  errorFormatter: function (param, msg, value) {
+    var namespace = param.split(','),
+      root = namespace.shift(),
+      formParam = root;
+
+    while (namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param: formParam,
+      msg: msg,
+      value: value
+    };
+  }
+}));
+
 
 
 var users = [{
@@ -25,7 +51,7 @@ var users = [{
     in: 1,
     first_name: 'Axel',
     studenten_nummer: 123456,
-  
+
 
   }
 
@@ -72,11 +98,32 @@ function register(req, res) {
   });
 }
 app.post('/users/add', function (req, res) {
-  console.log(req.body.first_name);
-  // var newUser = {
-  //   first_name: req.body.firstname
-  // }
-  // console.log(newUser);
+  // console.log(req.body.first_name);
+
+  req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
+  req.checkBody('studenten_nummer', 'Studentennummer is verplicht').notEmpty;
+  req.checkBody('Email', 'email is verplicht').notEmpty;
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    // console.log('error');
+    res.render('pages/register.ejs', {
+      title: "register",
+      users: users,
+      errors: errors
+    });
+  } else {
+    var newUser = {
+      first_name: req.body.firstname,
+      studenten_nummer: req.body.studenten_nummer,
+      password: req.body.password
+    }
+
+    console.log('Registeren is gelukt');
+  }
+
+
 });
 
 

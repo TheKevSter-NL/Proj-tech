@@ -3,8 +3,8 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const port = 3000
 const expressValidator = require('express-validator');
-// var mongojs = require('mongojs')
-// var db = mongojs('datingapp', ['users'])
+var mongojs = require('mongojs')
+var db = mongojs('datingapp', ['users'])
 
 
 
@@ -52,27 +52,19 @@ app.use(expressValidator({
 
 
 
-var users = [{
+// var users = [{
 
-    in: 1,
-    first_name: 'Axel',
-    leeftijd: '21',
-    opleiding: 'CMD'
-
-
-  },
-  {
-
-    in: 2,
-    first_name: 'sara',
-    leeftijd: '21',
-    opleiding: 'IT',
-    studenten_nummer: 123456,
+//     in: 1,
+//     first_name: 'Axel',
+//     leeftijd: '21',
+//     opleiding: 'CMD',
+//     overJezelf: 'Ik zit in een band'
 
 
-  }
+//   }
+  
 
-]
+// ]
 
 
 // app.post('/users/add', function (reg, res) {
@@ -120,8 +112,8 @@ app.post('/users/add', function (req, res) {
   req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
   req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
   req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
-  req.checkBody('studenten_nummer', 'Studentennummer is verplicht').notEmpty;
-  req.checkBody('Email', 'email is verplicht').notEmpty;
+  req.checkBody('overJezelf', 'Over jezelf is verplicht').notEmpty;
+
 
   var errors = req.validationErrors();
 
@@ -136,7 +128,8 @@ app.post('/users/add', function (req, res) {
     var newUser = {
       first_name: req.body.firstname,
       opleiding: req.body.opleiding,
-      leeftijd: req.body.leeftijd
+      leeftijd: req.body.leeftijd,
+      overJezelf: req.body.overJezelf
     }
 
     console.log('Registeren is gelukt');
@@ -183,10 +176,14 @@ function profile(req, res) {
 }
 
 function userprofile(req, res) {
-  res.render('pages/userprofile.ejs', {
-    title: "userprofile",
-    users: users
-  });
+  db.users.find(function(err, docs){
+    console.log(docs);
+    res.render('pages/userprofile.ejs', {
+      title: "userprofile",
+      users: docs
+    });
+  }) 
+  
 }
 
 

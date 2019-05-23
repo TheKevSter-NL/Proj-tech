@@ -41,19 +41,25 @@
     <section class="profile-info">
       <article>
         <p>
-          <b>Verkoper</b> bij <b>Ikea</b>
+            <% users.forEach(function(user){ %>
+          <b>Leeftijd:</b> 
+          <i><%=user.leeftijd %></i>
+          <% }) %>
         </p>
         <p>
-          Volg opleiding: CMD
+            <% users.forEach(function(user){ %>
+         <b>Volg opleiding:</b> <i><%=user.opleiding %></i>
+          <% }) %>
         </p>
 
 <hr />
       </article>
       <article>
         <h2>Over Axel</h2>
-        <p>
-          Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw,
-        </p>
+        <% users.forEach(function(user){ %>
+          
+          <p><%=user.overJezelf %></p>
+          <% }) %>
 <hr />
       </article>
 

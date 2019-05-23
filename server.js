@@ -8,6 +8,7 @@ const expressValidator = require('express-validator');
 
 
 
+
 const app = express();
 //view Engine
 app.set('view engine', 'ejs')
@@ -26,6 +27,10 @@ app.use(express.static(path.join(__dirname, 'static')))
 //   res.locals.errors = null
 //   next();
 // });
+app.use(function(req, res, next){
+  res.locals.errors = null
+  next();
+});
 
 //Express Validator middleware
 app.use(expressValidator({
@@ -61,7 +66,8 @@ var users = [{
     in: 2,
     first_name: 'sara',
     leeftijd: '21',
-    opleiding: 'IT'
+    opleiding: 'IT',
+    studenten_nummer: 123456,
 
 
   }
@@ -88,6 +94,10 @@ app.get("/notification", notification)
 app.get("/setting", setting)
 
 
+
+
+
+
 app.post('/', function (req, res) {
   res.send('Got a POST request')
 })
@@ -110,6 +120,8 @@ app.post('/users/add', function (req, res) {
   req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
   req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
   req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
+  req.checkBody('studenten_nummer', 'Studentennummer is verplicht').notEmpty;
+  req.checkBody('Email', 'email is verplicht').notEmpty;
 
   var errors = req.validationErrors();
 
@@ -129,10 +141,15 @@ app.post('/users/add', function (req, res) {
 
     console.log('Registeren is gelukt');
     // db.users.insert(newUSer, (errors, req, res)
+      // studenten_nummer: req.body.studenten_nummer,
+      // password: req.body.password
+    }
+
+    console.log('Registeren is gelukt');
   }
 
 
-});
+);
 
 
 function inloggen(req, res) {

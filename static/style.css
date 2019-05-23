@@ -1,0 +1,927 @@
+/*Import Google Fonts*/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/****************************/
+/* Preset codes toepasbaar voor elke pagina*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  text-decoration: none;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+section {
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+button {
+  font-weight: bold;
+}
+
+/****************************/
+/* Headings font en kleur */
+h1,
+h2,
+h3 {
+  
+  color: #000;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 0;
+  color: #00D66C;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+main {
+  max-width: 50em;
+  margin-bottom: 5em;
+  background-color: unset;
+  margin: 0 auto;
+}
+
+#index main section ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: .0.5em;
+  overflow: hidden;
+}
+
+aside {
+  width: 25em;
+  padding: 1em;
+}
+
+label {
+  display: flex;
+  flex-flow: wrap;
+  line-height: 1.5em;
+  color: #000;
+  font-weight: bold;
+}
+
+fieldset {
+  border: none;
+  padding: 0.5em 0em 1.5em;
+}
+
+/****************************/
+/* HEADER*/
+header {
+  background-color: #fff;
+  padding: 0.1em;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 2px solid #000;
+  display: block;
+}
+
+#mobile-nav {
+  display: none;
+}
+
+#desktop-nav {
+  padding: 0;
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  max-width: unset;
+}
+
+#desktop-nav ul {
+  width: 40em;
+  margin-left: auto;
+  padding: 1.4em 1em;
+}
+
+#desktop-nav a:hover {
+  color: #77B8CA;
+}
+
+#desktop-nav a {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s ease 0s;
+}
+
+nav {
+  max-width: 75em;
+  margin: 0 auto;
+}
+
+nav ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
+
+header img {
+  width: 8.5em;
+  padding: 0.5em;
+}
+
+header li:nth-child(2) a img,
+header li:nth-child(3) a img,
+header li:last-child img {
+  padding: 0.5em;
+  width: 3.3em;
+  margin: auto;
+}
+
+header li:nth-child(2) a,
+header li:nth-child(3) a,
+header li:last-child a {
+  /*! background-color: #00D56E; */
+  /*! border-radius: 50%; */
+  display: inherit;
+  /*! width: 3em; */
+  transition: 0.3s;
+  /*! height: 3em; */
+  margin: 0 auto;
+  z-index: 999;
+}
+
+header li:nth-child(2) a:hover,
+header li:nth-child(3) a:hover,
+header li:last-child a:hover {
+  /*! background-color: #2800A0; */
+}
+
+/****************************/
+/*filter*/
+legend {
+  font-weight: bold;
+  font-size: 1.3em;
+  width: 100%;
+  font-family: "smart cherie";
+  color: #fff;
+  font-size: 2em;
+}
+
+form button {
+  background-color: #FF6E70;
+  border-radius: 1em;
+  padding: 10px 25px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 2px 3px #000;
+  transition: 0.3s ease 0s;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #D4595B;
+}
+
+/****************************/
+/****************************/
+/*+++++++INDEX PAGINA+++++++*/
+/* SECTION 1*/
+#index main h1 {
+  text-align: center;
+}
+
+/****************************/
+/* SECTION 2*/
+/*+++++++Searchbar+++++++*/
+#zoekmachine input {
+  font-size: 1.3em;
+  background-color: #2800A0;
+  background-image: url("images/iconen/zoek.svg");
+  background-size: 1.3em;
+  background-repeat: no-repeat;
+  background-position: 1.3em;
+  border-radius: 1rem;
+  border: none;
+  width: 2.7em;
+  padding: 1em 2em;
+  margin-left: 2em;
+  height: 1.5em;
+  transition: all 0.5s;
+  color: #fff;
+}
+
+#zoekmachine input::placeholder {
+  font-size: 0.65em;
+  font-weight: bold;
+}
+
+#zoekmachine input:focus {
+  border-radius: 3rem;
+  width: 10em;
+  padding: 1em 1em 1em 3em;
+}
+
+#zoekmachine input:hover {
+  background-color: #5E40B8;
+}
+
+/*++++++++++++++*/
+/****************************/
+/* SECTION 3*/
+main {}
+
+#index main section {
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+main h2 {
+  text-align: center;
+  padding: 0 15px;
+  color: #000;
+  width: 100%;
+}
+
+main ul li {
+  width: 50%;
+  padding: 1em;
+}
+
+main ul li article {
+  /* height: 22em; */
+  padding: 0;
+  text-align: center;
+  position: relative;
+  /*! border: 3px solid transparent; */
+  background-size: cover;
+  /*! transition: 0.3s ease 0s; */
+  border-radius: 0.5em;
+  width: 100%;
+  background-color: #77B8CA;
+}
+
+main ul li article img {
+  object-fit: cover;
+  height: 11.4em;
+  margin: 0 0-4px 0;
+  padding: 0;
+  position: relative;
+  border-radius: 0.5em 0.5em 0em 0em;
+}
+
+main ul li article h3 {
+  color: #fff;
+  font-size: 1em;
+  text-align: left;
+  padding: 0.5em;
+  position: relative;
+  transition: all 0.3s;
+  display: inherit;
+  margin: 0;
+  z-index: 1;
+  bottom: 40px;
+  position: absolute;
+  background-color: #00000080;
+  width: 100%;
+}
+
+#index main ul li article>p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3.6em;
+  top: 0;
+  color: transparent;
+  z-index: 1;
+}
+
+#index ul li article p a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  color: transparent;
+}
+
+#index main ul li article p a:hover {
+  transform: scale(1.01, 1.01);
+}
+
+footer ul li {
+  width: 100%;
+}
+
+main ul li article footer img {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+main ul li article footer ul li button {
+  color: transparent;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  background-position: center;
+  margin: 0.1em auto;
+  padding: 0.8em;
+  transition: all 0.7s ease 0s;
+  display: block;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  background-repeat: no-repeat;
+  outline: none;
+  background-size: cover;
+  cursor: pointer;
+}
+
+main ul li article footer ul li:nth-child(1) button,
+#profile main footer ul li:last-child button:first-child {
+  background-image: url(" images/iconen/like-white.png");
+}
+
+main ul li article footer ul li:nth-child(2) button,
+#profile main footer ul li:last-child button:last-child {
+  background-image: url(" images/iconen/conversation.png");
+}
+
+main ul li article footer ul li button:active {
+  /*! border-radius: 1em; */
+  /*! background-size: 1em; */
+  background-repeat: no-repeat;
+  /*! transform: rotate(360deg); */
+}
+
+main ul li article footer ul li:nth-child(1) button:active,
+main ul li article footer ul li:nth-child(1) button:focus,
+#profile main footer ul li:last-child button:first-child:active,
+#profile main footer ul li:last-child button:first-child:focus {
+  background-image: url(" images/iconen/like.png");
+  /*! background-size: 1.7em; */
+}
+
+/* main ul li article footer ul li:nth-child(2) button:active, #index main ul li article footer ul li:nth-child(2) button:active{
+  background-image: url(" images/iconen/vinkje.svg");
+  background-color: #fff;
+} */
+main footer ul,
+#index main footer ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 0 0 1em 1em;
+}
+
+main footer ul li {
+  width: 100%;
+}
+
+main footer b {
+  position: relative;
+  /* top: 0.2em; */
+}
+
+main h1 {
+  text-align: left;
+  padding: 0.5em;
+  color: #fff;
+  background-color: #77B8CA;
+  margin: 0;
+  margin-bottom: 0.4em;
+}
+
+main ul li {
+  padding: 0.5em;
+  margin: 0 auto;
+  width: 100%;
+}
+
+main footer li {
+  width: 100% !important;
+}
+
+/****************************/
+/*profile*/
+#profile section,
+#userprofile section {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+#profile section hr,
+#userprofile section hr {
+  margin-top: 15px;
+  color: #f6f6f6;
+}
+
+#profile main section ul #userprofile main section ul {
+  padding: 0;
+}
+
+#profile main ul li,
+#userprofile main ul li {
+  width: 100%;
+  padding: 0;
+}
+
+#profile main ul li article,
+#userprofile main ul li article {
+  max-width: 100%;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0em;
+}
+
+#profile main ul li article>p {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  padding: 15px;
+}
+
+#profile main ul li article>p a {
+  color: #fff;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+#profile main ul li article img,
+#userprofile main ul li article img {
+  object-fit: cover;
+  height: 22em;
+  margin: 0 0-4px 0;
+  padding: 0;
+  position: relative;
+  border-radius: 0em;
+}
+
+#profile main ul li article h1,
+#userprofile main ul li article h1 {
+  color: #fff;
+  text-align: left;
+  padding: 0.5em;
+  font-size: 2em;
+  position: relative;
+  /*! transition: all 0.3s; */
+  display: inherit;
+  margin: 0;
+  z-index: 1;
+  bottom: 0px;
+  position: relative;
+  background-color: #77B8CA;
+  width: 100%;
+}
+
+#profile main footer ul li:last-child {
+  display: inline-flex;
+  padding: 1.5em;
+}
+
+.profile-info article h2 {
+  text-align: left;
+  padding: 0;
+  font-size: 1.5em;
+  padding-bottom: 1em;
+}
+
+.profile-info article {
+  padding: 1em 1em 0;
+  line-height: 2em;
+}
+
+/****************************/
+/*+++++++userprofile++++++++*/
+#userprofile main ul li article>p {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  padding: 15px;
+  right: 0;
+}
+
+#userprofile main ul li article>p a {
+  color: #fff;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+#userprofile main ul li article>p a img {
+  width: 1em;
+  height: 1em;
+}
+
+/****************************/
+/*+++++++notification++++++++*/
+#notification main {
+  margin-bottom: 4em;
+}
+
+#notification .notie article {
+  display: flex;
+}
+
+#notification .notie article p {
+  padding: 0.5em 1em;
+}
+
+#notification .notie article p:last-child {
+  padding: 1.3em;
+}
+
+#notification main img {
+  position: relative;
+  width: 5em;
+  height: 5em;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+#notification section hr {
+  color: #77B8CA;
+}
+
+/*+++++++chat++++++++*/
+#chat main {
+  margin-bottom: 4em;
+  m: ;
+}
+
+#chat .chat article {
+  display: flex;
+  /*! clear: both; */
+}
+
+#chat .chat article p {
+  padding: 0.5em 1em;
+}
+
+#chat .chat article p:last-child {
+  padding: 1.9em 1em;
+  font-style: italic;
+}
+
+#chat main img {
+  position: relative;
+  width: 5em;
+  height: 5em;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+#chat section hr {
+  color: #77B8CA;
+}
+
+/*+++++++++++++++*/
+/*+++++++setting++++++++*/
+#settings {
+  padding-top: 1em;
+}
+
+#settings main img {
+  object-fit: cover;
+  height: 255px;
+  padding: 1em;
+  position: relative;
+}
+
+#settings main .premium::before {
+  content: "";
+  background-image: linear-gradient(#00000080, #0000004d);
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  bottom: 1.7em;
+  z-index: 1;
+}
+
+.premium {
+  position: relative;
+  color: #fff;
+  line-height: 2em;
+}
+
+.premium p {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+  z-index: 2;
+}
+
+.premium a {
+  display: block;
+  background-color: #FF6E70;
+  width: 15em;
+  margin: 0 auto;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1em;
+  padding: 5px;
+  margin-top: 8px;
+}
+
+/*********START*************/
+#start {
+  background-image: url("images/afbeeldingen/premium2.jpeg");
+  background-color: unset;
+  background-size: cover;
+  min-height: calc(100vh - 0px);
+  position: relative;
+  z-index: 1;
+  background-position: top;
+}
+
+#start::after {
+  content: "";
+  background: #00000080;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+#start header{
+  display: none;
+}
+#start main {
+  padding: 20% 0;
+  margin-bottom: 0;
+  min-height: calc(100vh - 0px);
+  max-width: 25em;
+}
+
+#start section {
+  text-align: center;
+}
+
+#start img {
+  max-width: 10em;
+  margin-top: 5em;
+}
+
+#start h1, .inloggen h1 {
+  text-align: center;
+  background-color: transparent;
+  font-size: 4em;
+  font-family: smart cherie;
+}
+
+
+#start section p:nth-child(3) > a {
+  display: block;
+  background-color: #FF6E70;
+  width: 5em;
+  margin: 0 auto;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1em;
+  padding: 15px;
+  margin-top: 8px;
+  font-size: 2em;
+}
+
+#start.inloggen section p:nth-child(3) > a {
+
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  margin: 0 auto;
+      margin-top: 0px;
+  color: #fff;
+  text-decoration: underline;
+  border-radius: 1em;
+  padding: 15px;
+  margin-top: 8px;
+  font-size: 1em;
+  text-align: left;
+
+}
+.inloggen main {
+
+  padding: 1px 0 !important;
+
+}
+.inloggen form {
+
+  text-align: left;
+
+  padding: 15px;
+}
+.inloggen form i {
+  display: flex;
+  padding: 0 0 2em;
+}
+
+.inloggen main hr {
+  border-color: #f6f6f6;
+  width: 100%;
+  margin-bottom: 2.5em;
+}
+
+.inloggen main label {
+  display: grid;
+  padding: 1em 0em;
+  font-weight: bold;
+  color: #fff;
+}
+
+
+.inloggen main fieldset {
+  color: transparent;
+}
+
+.inloggen main .wwvergeten {
+  padding-bottom: 2.5em;
+}
+
+.inloggen main fieldset p {
+  color: #3e3e3e;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.inloggen input {
+  padding: 0.9em;
+  border-radius: 0.5em;
+  margin-top: 1.2em;
+  border-color: #000;
+  z-index: 2;
+  transition: all 0.5s;
+}
+
+.inloggen input:focus {
+  background-color: #bed4f1;
+  transform: scale(1.01, 1.01);
+}
+
+.inloggen input:invalid {
+  border-color: #FF9595;
+}
+
+.inloggen input:disabled {
+  border-color: #eee;
+  background-color: #f9f9f9;
+}
+
+/****************************/
+/****************************/
+/* FOOTER */
+footer {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+footer p {
+  color: #fff;
+}
+
+/****************************/
+/*+++++MEDIA QUERIES+++++*/
+/*Bij de aangegeven max-width wordt de code uitgevoerd!*/
+/*Desktop en laptop*/
+@media (max-width:80em) {
+  h1 {
+    font-size: 2em;
+  }
+
+  main h2 {
+    display: inherit;
+    text-align: center;
+  }
+
+  main ul li,
+  #index section:nth-child(4) ul li {
+    /*! width: 33.33%; */
+  }
+
+ 
+  #verhaal section {
+    max-width: 100%;
+  }
+}
+
+/*tablets landscape mode*/
+@media (max-width:60em) {
+  #verhaal section {
+    top: 5.6em;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  header {
+    position: fixed;
+    bottom: 0;
+    border-top: 4px solid #000;
+  }
+
+  header img {
+    width: 3.5em;
+    margin: 0 auto;
+  }
+
+  nav ul li:first-child p:first-child {
+    display: none;
+  }
+
+  nav ul li:first-child p:last-child {
+    display: unset;
+  }
+
+  main ul li,
+  #index section:nth-child(4) ul li {
+    /*! width: 50%; */
+  }
+
+
+
+  #index main ul li {
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  #index main h1 {
+    display: none;
+  }
+
+  #desktop-nav {
+    display: none;
+  }
+
+  #mobile-nav {
+    display: block;
+  }
+
+  main {
+    margin-bottom: 5em;
+  }
+}
+
+/*tablets portrait mode*/
+@media (max-width:45em) {
+
+  main ul li article,
+  #index main ul li article {
+    max-width: 20em;
+    margin: 0 auto;
+  }
+
+  #index main section ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*mobile */
+@media (max-width:25em) {
+  #index main section ul {
+    grid-template-columns: 1fr;
+  }
+
+  footer ul li {
+    margin: 0 auto;
+  }
+}
+
+/****************************/
+/*+++++++++++++++++++++++*/

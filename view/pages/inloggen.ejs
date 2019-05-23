@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <% include ../partials/head.ejs %>
+</head>
+<body id="start" class="inloggen">
+    <!--Header begin-->
+    <header>
+        <!-- <% include ../partials/nav.ejs %> -->
+    </header>
+    <!--Header end-->
+    <main>
+
+        <section>
+            <p><img src="images/logo/logo-active.png" alt="Logo"></p>
+            
+            <form action="/index" method="GET">
+              <fieldset>
+                <legend>Inloggen</legend>
+                <label> Email
+                          <input type="email" placeholder="mail@mail.nl" required>
+                        </label>
+                <label> Wachtwoord
+                    <input type="password" minlength="6" placeholder="minimaal 6 characters" required>
+                    </label>
+              </fieldset>
+              <!-- <i>
+                  <a href="index.html">Wachtwoord vergeten?</a>
+                </i> -->
+              <button type="submit">Inloggen</button>
+            </form>
+            
+            <p><a href="/register">Nog geen account? Klik hier </a></p>
+        </section>
+    </main>
+</body>
+</html>

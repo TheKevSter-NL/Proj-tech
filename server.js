@@ -5,7 +5,7 @@ const port = 3000
 const expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var db = mongojs('datingapp', ['users'])
-var ObjectId = mongojs.ObjectID
+
 
 
 
@@ -100,7 +100,51 @@ function start(req, res) {
   });
 }
 
+function register(req, res) {
+  db.users.find(function (err, docs) {
+  res.render('pages/register.ejs', {
+    title: "register",
+    users: docs
+  });
+})
+}
+app.post('/users/add', function (req, res) {
+    // console.log(req.body.first_name);
 
+    req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
+    req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
+    req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
+    req.checkBody('overJezelf', 'Over jezelf is verplicht').notEmpty;
+
+
+      var newUser = {
+        first_name: req.body.first_name,
+        opleiding: req.body.opleiding,
+        leeftijd: req.body.leeftijd,
+        overJezelf: req.body.overJezelf
+      }
+      
+      console.log('Registeren is gelukt');
+      res.redirect("../userprofile");
+      db.users.insert(newUser, function (req, res) {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+)
+app.delete('/users/delete', function (req, res) {
+ 
+    
+    console.log('Registeren is gelukt');
+    res.redirect("../userprofile");
+    db.users.remove(docs, function (reg, res) {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
+)
 
 function inloggen(req, res) {
   res.render('pages/inloggen.ejs', {
@@ -157,49 +201,6 @@ function setting(req, res) {
 }
 app.use(function (req, res, next) {
   res.status(404).render('not-found');
-});
-
-
-function register(req, res) {
-  db.users.find(function (err, docs) {
-  res.render('pages/register.ejs', {
-    title: "register",
-    users: docs
-  });
-})
-}
-app.post('/users/add', function (req, res) {
-    // console.log(req.body.first_name);
-
-    req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
-    req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
-    req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
-    req.checkBody('overJezelf', 'Over jezelf is verplicht').notEmpty;
-
-
-      var newUser = {
-        first_name: req.body.first_name,
-        opleiding: req.body.opleiding,
-        leeftijd: req.body.leeftijd,
-        overJezelf: req.body.overJezelf
-      }
-      
-      console.log('Registeren is gelukt');
-      res.redirect("../userprofile");
-      db.users.insert(newUser, function (err, result) {
-        if (err) {
-          console.log(err); 
-        }
-      }); 
-    })
-
-app.delete('/users/delete/:id', function(req, res){
-  db.users.remove({_id: ObjectId(req.params.id)}),function(err, result){
-    if(error){
-      console.log(err); 
-    }
-    res.redirect('../userprofile');
-  }
 });
 
 app.listen(port, function () {

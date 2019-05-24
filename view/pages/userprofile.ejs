@@ -65,9 +65,10 @@
 
     </section>
     <section>
-       <p> <% users.forEach(function(user){ %>
-          <i><%=user.first_name %><%=user.leeftijd %><%=user.opleiding %><%=user.overJezelf %><a href="/users/delete">Wis mijn account</a> </i>
-            <% }) %></p>
+       <% users.forEach(function(user){ %>
+          <i><%=user.first_name %><%=user.leeftijd %><%=user.opleiding %><%=user.overJezelf %> - 
+            <a href="/user/delete/" class="deleteUser" data-id="<%= user._id %>"> Wis mijn account </a> </i>
+            <% }) %>
     </section>
 
   </main>

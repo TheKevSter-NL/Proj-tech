@@ -5,7 +5,7 @@ const port = 3000
 const expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var db = mongojs('datingapp', ['users'])
-
+var ObjectId = mongojs.ObjectID
 
 
 
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'static')))
 //   res.locals.errors = null
 //   next();
 // });
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   res.locals.errors = null
   next();
 });
@@ -62,7 +62,7 @@ app.use(expressValidator({
 
 
 //   }
-  
+
 
 // ]
 
@@ -100,49 +100,6 @@ function start(req, res) {
   });
 }
 
-function register(req, res) {
-  res.render('pages/register.ejs', {
-    title: "register",
-    users: users
-  });
-}
-app.post('/users/add', function (req, res) {
-  // console.log(req.body.first_name);
-
-  req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
-  req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
-  req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
-  req.checkBody('overJezelf', 'Over jezelf is verplicht').notEmpty;
-
-
-  var errors = req.validationErrors();
-
-  if (errors) {
-    // console.log('error');
-    res.render('pages/register.ejs', {
-      title: "register",
-      users: users,
-      errors: errors
-    });
-  } else {
-    var newUser = {
-      first_name: req.body.firstname,
-      opleiding: req.body.opleiding,
-      leeftijd: req.body.leeftijd,
-      overJezelf: req.body.overJezelf
-    }
-
-    console.log('Registeren is gelukt');
-    // db.users.insert(newUSer, (errors, req, res)
-      // studenten_nummer: req.body.studenten_nummer,
-      // password: req.body.password
-    }
-
-    console.log('Registeren is gelukt');
-  }
-
-
-);
 
 
 function inloggen(req, res) {
@@ -176,14 +133,14 @@ function profile(req, res) {
 }
 
 function userprofile(req, res) {
-  db.users.find(function(err, docs){
+  db.users.find(function (err, docs) {
     console.log(docs);
     res.render('pages/userprofile.ejs', {
       title: "userprofile",
       users: docs
     });
-  }) 
-  
+  })
+
 }
 
 
@@ -200,6 +157,49 @@ function setting(req, res) {
 }
 app.use(function (req, res, next) {
   res.status(404).render('not-found');
+});
+
+
+function register(req, res) {
+  db.users.find(function (err, docs) {
+  res.render('pages/register.ejs', {
+    title: "register",
+    users: docs
+  });
+})
+}
+app.post('/users/add', function (req, res) {
+    // console.log(req.body.first_name);
+
+    req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
+    req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
+    req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
+    req.checkBody('overJezelf', 'Over jezelf is verplicht').notEmpty;
+
+
+      var newUser = {
+        first_name: req.body.first_name,
+        opleiding: req.body.opleiding,
+        leeftijd: req.body.leeftijd,
+        overJezelf: req.body.overJezelf
+      }
+      
+      console.log('Registeren is gelukt');
+      res.redirect("../userprofile");
+      db.users.insert(newUser, function (err, result) {
+        if (err) {
+          console.log(err); 
+        }
+      }); 
+    })
+
+app.delete('/users/delete/:id', function(req, res){
+  db.users.remove({_id: ObjectId(req.params.id)}),function(err, result){
+    if(error){
+      console.log(err); 
+    }
+    res.redirect('../userprofile');
+  }
 });
 
 app.listen(port, function () {

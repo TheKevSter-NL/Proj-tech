@@ -64,7 +64,11 @@
       </article>
 
     </section>
-
+    <section>
+       <p> <% users.forEach(function(user){ %>
+          <i><%=user.first_name %><%=user.leeftijd %><%=user.opleiding %><%=user.overJezelf %><a href="/users/delete">Wis mijn account</a> </i>
+            <% }) %></p>
+    </section>
 
   </main>
 </body>

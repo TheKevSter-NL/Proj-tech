@@ -62,7 +62,11 @@ app.post('/users/add', function (req, res) {
     }
 )
 
+<<<<<<< HEAD
+app.get('/users/delete', function (req, res) {    
+=======
 app.post('/users/delete', function (req, res) {    
+>>>>>>> 93598af32ce3229d9c36f177b806d472ebbaf209
   db.users.remove( {})
     console.log('Account is gewist');
     res.redirect("../");

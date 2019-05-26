@@ -392,6 +392,7 @@ main footer ul,
   text-align: center;
   margin: 0 auto;
   border-radius: 0 0 1em 1em;
+
 }
 
 main footer ul li {
@@ -452,6 +453,7 @@ main footer li {
   margin: 0 auto;
   border: none;
   border-radius: 0em;
+  display: flex;
 }
 
 #profile main ul li article>p {
@@ -498,7 +500,10 @@ main footer li {
   display: inline-flex;
   padding: 1.5em;
 }
+#profile main footer ul {
 
+  padding: 7em 0;
+}
 .profile-info article h2 {
   text-align: left;
   padding: 0;
@@ -513,6 +518,10 @@ main footer li {
 
 /****************************/
 /*+++++++userprofile++++++++*/
+#userprofile main footer ul {
+
+  padding: 7em 0;
+}
 #userprofile main ul li article>p {
   position: absolute;
   top: 0;
@@ -927,6 +936,14 @@ footer p {
   #index main section ul {
     grid-template-columns: 1fr 1fr;
   }
+  #profile main ul li article, #userprofile main ul li article {
+  
+    display: block;
+}
+#profile main footer ul, #userprofile main footer ul {
+
+  padding: 0;
+}
 }
 
 /*mobile */

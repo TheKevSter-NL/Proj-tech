@@ -48,7 +48,7 @@ button {
 h1,
 h2,
 h3 {
-  
+
   color: #000;
   font-weight: bold;
 }
@@ -165,8 +165,6 @@ header li:last-child img {
 header li:nth-child(2) a,
 header li:nth-child(3) a,
 header li:last-child a {
-  /*! background-color: #00D56E; */
-  /*! border-radius: 50%; */
   display: inherit;
   /*! width: 3em; */
   transition: 0.3s;
@@ -175,11 +173,6 @@ header li:last-child a {
   z-index: 999;
 }
 
-header li:nth-child(2) a:hover,
-header li:nth-child(3) a:hover,
-header li:last-child a:hover {
-  /*! background-color: #2800A0; */
-}
 
 /****************************/
 /*filter*/
@@ -254,7 +247,7 @@ form button:hover {
 /*++++++++++++++*/
 /****************************/
 /* SECTION 3*/
-main {}
+
 
 #index main section {
   padding: 0;
@@ -539,6 +532,33 @@ main footer li {
   height: 1em;
 }
 
+#userprofile .user_profile_delete {
+  padding-bottom: 1em;
+  text-align: center;
+
+}
+
+#userprofile .user_profile_delete i {
+  display: none;
+}
+
+#userprofile .user_profile_delete a {
+
+  display: block;
+  background-color: #FF6E70;
+  width: 15em;
+  margin: 0 auto;
+  margin-top: 0px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1em;
+  padding: 15px;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: bold;
+
+}
+
 /****************************/
 /*+++++++notification++++++++*/
 #notification main {
@@ -573,7 +593,6 @@ main footer li {
 /*+++++++chat++++++++*/
 #chat main {
   margin-bottom: 4em;
-  m: ;
 }
 
 #chat .chat article {
@@ -677,9 +696,11 @@ main footer li {
   bottom: 0;
   z-index: -1;
 }
-#start header{
+
+#start header {
   display: none;
 }
+
 #start main {
   padding: 20% 0;
   margin-bottom: 0;
@@ -696,7 +717,8 @@ main footer li {
   margin-top: 5em;
 }
 
-#start h1, .inloggen h1 {
+#start h1,
+.inloggen h1 {
   text-align: center;
   background-color: transparent;
   font-size: 4em;
@@ -704,7 +726,7 @@ main footer li {
 }
 
 
-#start section p:nth-child(3) > a {
+#start section p:nth-child(3)>a {
   display: block;
   background-color: #FF6E70;
   width: 5em;
@@ -717,13 +739,13 @@ main footer li {
   font-size: 2em;
 }
 
-#start.inloggen section p:nth-child(3) > a {
+#start.inloggen section p:nth-child(3)>a {
 
   display: block;
   background-color: transparent;
   width: 100%;
   margin: 0 auto;
-      margin-top: 0px;
+  margin-top: 0px;
   color: #fff;
   text-decoration: underline;
   border-radius: 1em;
@@ -733,17 +755,20 @@ main footer li {
   text-align: left;
 
 }
+
 .inloggen main {
 
   padding: 1px 0 !important;
 
 }
+
 .inloggen form {
 
   text-align: left;
 
   padding: 15px;
 }
+
 .inloggen form i {
   display: flex;
   padding: 0 0 2em;
@@ -829,12 +854,9 @@ footer p {
     text-align: center;
   }
 
-  main ul li,
-  #index section:nth-child(4) ul li {
-    /*! width: 33.33%; */
-  }
 
- 
+
+
   #verhaal section {
     max-width: 100%;
   }
@@ -867,11 +889,6 @@ footer p {
 
   nav ul li:first-child p:last-child {
     display: unset;
-  }
-
-  main ul li,
-  #index section:nth-child(4) ul li {
-    /*! width: 50%; */
   }
 
 

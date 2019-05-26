@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path');
 const port = 3000
-const expressValidator = require('express-validator');
 var mongojs = require('mongojs')
 var db = mongojs('datingapp', ['users'])
 
@@ -22,56 +21,6 @@ app.use(bodyParser.urlencoded({
 // Set Static path
 app.use(express.static(path.join(__dirname, 'static')))
 
-//global Vars
-// app.use(function(req, res, next){
-//   res.locals.errors = null
-//   next();
-// });
-app.use(function (req, res, next) {
-  res.locals.errors = null
-  next();
-});
-
-//Express Validator middleware
-app.use(expressValidator({
-  errorFormatter: function (param, msg, value) {
-    var namespace = param.split(','),
-      root = namespace.shift(),
-      formParam = root;
-
-    while (namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param: formParam,
-      msg: msg,
-      value: value
-    };
-  }
-}));
-
-
-
-// var users = [{
-
-//     in: 1,
-//     first_name: 'Axel',
-//     leeftijd: '21',
-//     opleiding: 'CMD',
-//     overJezelf: 'Ik zit in een band'
-
-
-//   }
-
-
-// ]
-
-
-// app.post('/users/add', function (reg, res) {
-//   console.log('FORM SUCCES')
-
-// });
-
 
 
 app.get("/", start)
@@ -86,14 +35,6 @@ app.get("/notification", notification)
 app.get("/setting", setting)
 
 
-
-
-
-
-app.post('/', function (req, res) {
-  res.send('Got a POST request')
-})
-
 function start(req, res) {
   res.render('pages/start.ejs', {
     title: "start"
@@ -101,7 +42,7 @@ function start(req, res) {
 }
 
 function register(req, res) {
-  db.users.find(function (err, docs) {
+  db.users.find(function (docs) {
   res.render('pages/register.ejs', {
     title: "register",
     users: docs
@@ -109,40 +50,22 @@ function register(req, res) {
 })
 }
 app.post('/users/add', function (req, res) {
-    // console.log(req.body.first_name);
-
-    req.checkBody('first_name', 'Voornaam is verplicht').notEmpty;
-    req.checkBody('opleiding', 'Opleiding is verplicht').notEmpty;
-    req.checkBody('leeftijd', 'Leeftijd is verplicht').notEmpty;
-    req.checkBody('overJezelf', 'Over jezelf is verplicht').notEmpty;
-
-
       var newUser = {
         first_name: req.body.first_name,
         opleiding: req.body.opleiding,
         leeftijd: req.body.leeftijd,
         overJezelf: req.body.overJezelf
       }
-      
       console.log('Registeren is gelukt');
       res.redirect("../userprofile");
-      db.users.insert(newUser, function (req, res) {
-        if (err) {
-          console.log(err);
-        }
-      });
+      db.users.insert(newUser);
     }
 )
-app.delete('/users/delete', function (req, res) {
- 
-    
-    console.log('Registeren is gelukt');
-    res.redirect("../userprofile");
-    db.users.remove(docs, function (reg, res) {
-      if (err) {
-        console.log(err);
-      }
-    });
+
+app.post('/users/delete', function (req, res) {    
+  db.users.remove( {})
+    console.log('Account is gewist');
+    res.redirect("../");
   }
 )
 
@@ -165,10 +88,25 @@ function chats(req, res) {
 }
 
 function edit(req, res) {
-  res.render('pages/edit.ejs', {
-    title: "edit"
-  });
+  db.users.find(function (docs) {
+    res.render('pages/edit.ejs', {
+      title: "Edit",
+      users: docs
+    });
+})
 }
+app.post('/users/edit', function (req, res) {
+  
+    db.users.update( {}, {
+      "first_name" : req.body.first_name,
+      "opleiding": req.body.opleiding,
+      "leeftijd": req.body.leeftijd,
+      "overJezelf": req.body.overJezelf
+    } );
+    console.log('Profile is aangepast');
+    res.redirect("../userprofile");
+  }
+)
 
 function profile(req, res) {
   res.render('pages/profile.ejs', {

@@ -18,15 +18,15 @@
       <ul>
         <li>
           <article>
-            <p><a href="/edit"><img src="images/iconen/edit.png" alt="edit icon"></a></p>
-              <img src="images/afbeeldingen/userprofile.jpeg" alt="Profiel foto">
+            <p><a href="/edit"><img src="images/iconen/edit2.png" alt="edit icon"></a></p>
+            <img src="images/afbeeldingen/userprofile.jpeg" alt="Profiel foto">
 
             <footer>
               <ul>
                 <li>
                   <% users.forEach(function(user){ %>
                   <h1><%=user.first_name %></h1>
-                    <% }) %>
+                  <% }) %>
                 </li>
                 <!-- <li>
 <button class="favbutton"> Favorieten button </button>
@@ -41,34 +41,38 @@
     <section class="profile-info">
       <article>
         <p>
-            <% users.forEach(function(user){ %>
-          <b>Leeftijd:</b> 
+          <% users.forEach(function(user){ %>
+          <b>Leeftijd:</b>
           <i><%=user.leeftijd %></i>
           <% }) %>
         </p>
         <p>
-            <% users.forEach(function(user){ %>
-         <b>Volg opleiding:</b> <i><%=user.opleiding %></i>
+          <% users.forEach(function(user){ %>
+          <b>Volg opleiding:</b> <i><%=user.opleiding %></i>
           <% }) %>
         </p>
 
-<hr />
+        <hr />
       </article>
       <article>
-        <h2>Over Axel</h2>
         <% users.forEach(function(user){ %>
-          
-          <p><%=user.overJezelf %></p>
-          <% }) %>
-<hr />
+        <h2>Over <%=user.first_name %></h2>
+        <% }) %>
+        <% users.forEach(function(user){ %>
+        <p><%=user.overJezelf %></p>
+        <% }) %>
+        <hr />
       </article>
 
     </section>
-    <section>
-       <% users.forEach(function(user){ %>
-          <i><%=user.first_name %><%=user.leeftijd %><%=user.opleiding %><%=user.overJezelf %> - 
-            <a href="/user/delete/" class="deleteUser" data-id="<%= user._id %>"> Wis mijn account </a> </i>
-            <% }) %>
+    <section class="user_profile_delete">
+      
+        <h3>Mijn account wissen</h3>
+      <form action="/users/delete" id='registeren_form' method="POST">
+        
+
+        <button type="submit" value="submit">Wis Mijn Account</button>
+      </form>
     </section>
 
   </main>

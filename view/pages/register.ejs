@@ -12,7 +12,7 @@
     <main>
 
         <section>
-            <form action="/users/add" method="POST">
+            <form action="/users/add" id='registeren_form' method="POST">
               <fieldset>
                 <legend>Registeren</legend>
                 <label> Voornaam
@@ -24,20 +24,16 @@
                 <label> Opleiding
                   <input type="text" name="opleiding" required  >
                 </label>
-                <!-- <label> Over jezelf
-                    <input type="textarea" name="overJezelf" minlength="6" placeholder="minimaal 6 characters" required >
-                </label> -->
+             
                 <label> Informatie over jezelf
-                  <input type="text" name="overJezelf" required  >
+                    <textarea name="overJezelf" form="registeren_form" rows="4" > </textarea>
+            
                 </label>
               </fieldset>
-              <!-- <i>
-                  <a href="index.html">Wachtwoord vergeten?</a>
-                </i> -->
+   
               <button type="submit" value="submit">register</button>
             </form>
             
-            <p><a href="/register">Nog geen account? Klik hier </a></p>
         </section>
     </main>
 </body>

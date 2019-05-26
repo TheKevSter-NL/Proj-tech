@@ -51,6 +51,8 @@ function register(req, res) {
 }
 app.post('/users/add', function (req, res) {
       var newUser = {
+        studenten_nummer: req.body.studenten_nummer,
+        password: req.body.password,
         first_name: req.body.first_name,
         opleiding: req.body.opleiding,
         leeftijd: req.body.leeftijd,
@@ -62,11 +64,7 @@ app.post('/users/add', function (req, res) {
     }
 )
 
-<<<<<<< HEAD
 app.get('/users/delete', function (req, res) {    
-=======
-app.post('/users/delete', function (req, res) {    
->>>>>>> 93598af32ce3229d9c36f177b806d472ebbaf209
   db.users.remove( {})
     console.log('Account is gewist');
     res.redirect("../");

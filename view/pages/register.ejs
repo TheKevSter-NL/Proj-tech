@@ -15,6 +15,12 @@
             <form action="/users/add" id='registeren_form' method="POST">
               <fieldset>
                 <legend>Registeren</legend>
+                <label> Studnr.
+                  <input type="text" name="studenten_nummer" required  >
+                </label>
+                <label> Wachtwoord
+                  <input type="password" name="password" minlength="6" placeholder="minimaal 6 characters" required  >
+                </label>
                 <label> Voornaam
                   <input type="name" name="first_name" required  >
                 </label>

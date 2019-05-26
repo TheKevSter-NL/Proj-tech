@@ -1,65 +1,40 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <% include ../partials/head.ejs %>
 </head>
+<body id="start" class="inloggen">
+    <!--Header begin-->
+    <header>
+        <% include ../partials/nav.ejs %>
+    </header>
+    <!--Header end-->
+    <main>
 
-<body id="userprofile">
-  <!--Header begin-->
-  <header>
-    <% include ../partials/nav.ejs %>
-  </header>
-  <!--Header end-->
-  <main>
+        <section>
+            <form action="/users/edit" id='edit_form' method="POST">
+              <fieldset>
+                <legend>Profile Aanpassen</legend>
+                <label> Voornaam
+                  <input type="name" name="first_name" required  >
+                </label>
+                <label> Leeftijd
+                  <input type="number" name="leeftijd" minlength="2" required >
+                  </label>
+                <label> Opleiding
+                  <input type="text" name="opleiding" required  >
+                </label>
+                
+                <label> Informatie over jezelf
+                    <textarea name="overJezelf" form="edit_form" rows="4"> </textarea>
+   
+                </label>
+              </fieldset>
 
-    <section>
-      <!-- <h1>Resultaten</h1> -->
-      <ul>
-        <li>
-          <article>
-            <p><a href="/userprofile"><img src="images/iconen/vinkje.svg" alt="vinkje icon"></a></p>
-              <img src="images/afbeeldingen/userprofile.jpeg" alt="Profiel foto">
-
-            <footer>
-              <ul>
-                <li>
-                  <h1>Axel, 24</h1>
-
-                </li>
-                <!-- <li>
-<button class="favbutton"> Favorieten button </button>
-                  <button class="downloadbutton"> Download button </button>
-                </li> -->
-              </ul>
-            </footer>
-          </article>
-        </li>
-      </ul>
-    </section>
-    <section class="profile-info">
-      <article>
-        <p>
-          <b>Verkoper</b> bij <b>Ikea</b>
-        </p>
-        <p>
-          Volg opleiding: CMD
-        </p>
-
-<hr />
-      </article>
-      <article>
-        <h2>Axel, 24</h2>
-        <p>
-          Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw,
-        </p>
-<hr />
-      </article>
-
-    </section>
-
-
-  </main>
+              <button type="submit" value="submit">Toepassen</button>
+            </form>
+            
+        </section>
+    </main>
 </body>
-
 </html>

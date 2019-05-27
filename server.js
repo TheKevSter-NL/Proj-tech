@@ -1,17 +1,20 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
-const port = 3000
-var mongojs = require('mongojs')
-var db = mongojs('datingapp', ['users'])
+const port = 3000;
+const mongojs = require('mongojs');
+const db = mongojs('datingapp', ['users']);
 
 
 
 
 const app = express();
 //view Engine
-app.set('view engine', 'ejs')
-app.set('views', 'view')
+app.set('view engine', 'ejs');
+app.set('views', 'view');
 
 // body parser middelware
 app.use(bodyParser.json());
@@ -19,20 +22,20 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 // Set Static path
-app.use(express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, 'static')));
 
 
 
-app.get("/", start)
-app.get("/index", home)
-app.get("/register", register)
-app.get("/inloggen", inloggen)
-app.get("/chats", chats)
-app.get("/profile", profile)
-app.get("/edit", edit)
-app.get("/userprofile", userprofile)
-app.get("/notification", notification)
-app.get("/setting", setting)
+app.get("/", start);
+app.get("/index", home);
+app.get("/register", register);
+app.get("/inloggen", inloggen);
+app.get("/chats", chats);
+app.get("/profile", profile);
+app.get("/edit", edit);
+app.get("/userprofile", userprofile);
+app.get("/notification", notification);
+app.get("/setting", setting);
 
 
 function start(req, res) {
@@ -47,7 +50,7 @@ function register(req, res) {
     title: "register",
     users: docs
   });
-})
+});
 }
 app.post('/users/add', function (req, res) {
       var newUser = {
@@ -57,19 +60,19 @@ app.post('/users/add', function (req, res) {
         opleiding: req.body.opleiding,
         leeftijd: req.body.leeftijd,
         overJezelf: req.body.overJezelf
-      }
+      };
       console.log('Registeren is gelukt');
       res.redirect("../userprofile");
       db.users.insert(newUser);
     }
-)
+);
 
 app.get('/users/delete', function (req, res) {    
-  db.users.remove( {})
+  db.users.remove( {});
     console.log('Account is gewist');
     res.redirect("../");
   }
-)
+);
 
 function inloggen(req, res) {
   res.render('pages/inloggen.ejs', {
@@ -95,7 +98,7 @@ function edit(req, res) {
       title: "Edit",
       users: docs
     });
-})
+});
 }
 app.post('/users/edit', function (req, res) {
   
@@ -108,7 +111,7 @@ app.post('/users/edit', function (req, res) {
     console.log('Profile is aangepast');
     res.redirect("../userprofile");
   }
-)
+);
 
 function profile(req, res) {
   res.render('pages/profile.ejs', {
@@ -123,7 +126,7 @@ function userprofile(req, res) {
       title: "userprofile",
       users: docs
     });
-  })
+  });
 
 }
 
@@ -144,5 +147,6 @@ app.use(function (req, res, next) {
 });
 
 app.listen(port, function () {
+  // eslint-disable-next-line no-console
   console.log(`Server started on port 3000`);
-})
+});

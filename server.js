@@ -1,17 +1,19 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-const dontev = require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongo = require('mongodb');
 const mongojs = require('mongojs');
 const db = mongojs('datingapp', ['users']);
-const port = 3000;
-const app = express();
-const user = require('./signuser');
+const port = process.env.DB_PORT;
+const mongoosLogin = require('./mongoose');
+const multer  = require('multer');
+
 
 
 
@@ -28,18 +30,22 @@ app.use(bodyParser.urlencoded({
 // Set Static path
 app.use(express.static(path.join(__dirname, 'static')));
 
-
+// Sessions
 app.use(session({
   resave: false,
   saveUninitialized: true,
-  secret: process.env.SESSION_SECRET
+  host: process.env.DB_HOST,
+  db_name: process.env.DB_NAME,
+  secret: process.env.SESSION_SECRET,
+  port: process.env.PORT,
 }));
-app.listen(8000);
+app.listen(process.env.PORT);
 
 
 app.get("/", start);
 app.get("/index", home);
 app.get("/register", register);
+app.get("/uploadprofile", uploadprofile);
 app.get("/inloggen", inloggen);
 app.get("/chats", chats);
 app.get("/profile", profile);
@@ -48,6 +54,32 @@ app.get("/userprofile", userprofile);
 app.get("/notification", notification);
 app.get("/setting", setting);
 app.get('/log-out', logout);
+
+
+
+// Storage Engine
+const storage = multer.diskStorage({
+  destination: './static/uploads/',
+  filename: function(req, file, cb){
+    cb(null,file.fieldname +  path.extname(file.originalname));
+  } 
+});
+// upload
+
+const upload = multer({ storage: storage }).single('profile-pic');
+
+app.post('/users/upload', (req, res) => {
+  upload(req, res, (err) => {
+    if(err){
+      res.redirect('pages/uploadprofile.ejs', { msg: err});
+     } 
+     else {
+       console.log(req.file);
+       res.redirect('/userprofile');
+
+    }
+  });
+});
 
 
 function logout(req, res, next) {
@@ -74,8 +106,15 @@ function register(req, res) {
   });
 });
 }
+function uploadprofile(req, res) {
+  res.render('pages/uploadprofile.ejs', {
+    title: "profile-uploaden",
+    users: req.session.user,
+    mongoosLogin: req.session.mongoosLogin
+  });
+}
+
 app.post('/users/add', function (req, res) {
-      // var newUser = { studenten_nummer, password, first_name, opleiding, leeftijd, overJezelf } + reg.body;
       var newUser = { 
         studenten_nummer: req.body.studenten_nummer,
         password: req.body.password,
@@ -85,7 +124,7 @@ app.post('/users/add', function (req, res) {
         overJezelf: req.body.overJezelf
       };
       console.log('Registeren is gelukt');
-      res.redirect("../userprofile");
+      res.redirect("../uploadprofile");
       db.users.insert(newUser);
     }
 );
@@ -102,34 +141,52 @@ function inloggen(req, res) {
   res.render('pages/inloggen.ejs', {
     title: "inloggen",
     user: req.session.user,
-    users: docs
+    users: docs,
+    mongoosLogin: req.session.mongoosLogin
   });
 });
 }
-// app.get('/users/signin', function (req, res) {
- 
-//   db.users.findOne({studenten_nummer: req.body.studenten_nummer, password: req.body.password});
-//     console.log("gelukt");
-//     res.redirect("../");
-// });
 
-app.get('/users/signin', function (req, res) {
-  // var newUser = { studenten_nummer, password, first_name, opleiding, leeftijd, overJezelf } + reg.body;
-  var new2User = { 
-    studenten_nummer: req.body.studenten_nummer,
-    password: req.body.password
-  };
-  db.users.findOne(new2User);
-  console.log('Registeren is gelukt');
-  res.redirect("../userprofile");
+app.post('/users/signin', function(req, res) {
   
-}
-);
+  studenten_nummer= req.body.studenten_nummer;
+  process.env.PASSWORD = req.body.password;
+
+  mongoosLogin.findOne({studenten_nummer: studenten_nummer, password: process.env.PASSWORD}, function(err, mongoosLogin){
+    if(err){
+      console.log(err);
+      console.log('Error');
+      return res.redirect('/inloggen');
+    }
+    if(!mongoosLogin){
+      
+      console.log('Inloggen mislukt');
+      return res.redirect('/inloggen');
+      
+    }
+    req.session.mongoosLogin = mongoosLogin;
+    console.log('Inloggen gelukt');
+    return res.status(200).send, res.redirect('/index');
+    
+  
+    });
+  });
+
+ app.get('/user-check' ,function(req, res){
+  
+  if(!req.session.mongoosLogin) {
+    return res.status(401).send();
+  }
+  req.session.mongoosLogin = mongoosLogin;
+  return  res.status(200).send(process.env.SESSION_SECRET);
+
+});
+
 
 function home(req, res) {
   res.render('pages/index.ejs', {
     title: "Home",
-    user: req.session.user
+    mongoosLogin: req.session.mongoosLogin
   });
 }
 
@@ -138,7 +195,7 @@ function home(req, res) {
 function chats(req, res) {
   res.render('pages/chats.ejs', {
     title: "chats",
-    user: req.session.user
+    mongoosLogin: req.session.mongoosLogin
   });
 }
 
@@ -147,20 +204,22 @@ function edit(req, res) {
     res.render('pages/edit.ejs', {
       title: "Edit",
       users: docs,
-      user: req.session.user
+      mongoosLogin: req.session.mongoosLogin
     });
 });
 }
 app.post('/users/edit', function (req, res) {
   
     db.users.update( {}, { 
-      "first_name" : req.body.first_name,
-      "opleiding": req.body.opleiding,
-      "leeftijd": req.body.leeftijd,
-      "overJezelf": req.body.overJezelf
+      studenten_nummer: req.body.studenten_nummer,
+        password: req.body.password,
+        first_name: req.body.first_name,
+        opleiding: req.body.opleiding,
+        leeftijd: req.body.leeftijd,
+        overJezelf: req.body.overJezelf
     } );
     console.log('Profile is aangepast');
-    res.redirect("../userprofile");
+    res.redirect("../uploadprofile");
     
   }
 );
@@ -168,7 +227,7 @@ app.post('/users/edit', function (req, res) {
 function profile(req, res) {
   res.render('pages/profile.ejs', {
     title: "profile",
-    user: req.session.user
+    mongoosLogin: req.session.mongoosLogin
   });
 }
 
@@ -178,7 +237,7 @@ function userprofile(req, res) {
     res.render('pages/userprofile.ejs', {
       title: "userprofile",
       users: docs,
-      user: req.session.user
+      mongoosLogin: req.session.mongoosLogin
     });
   });
 
@@ -188,14 +247,14 @@ function userprofile(req, res) {
 function notification(req, res) {
   res.render('pages/notification.ejs', {
     title: "notification",
-    user: req.session.user
+    mongoosLogin: req.session.mongoosLogin
   });
 }
 
 function setting(req, res) {
   res.render('pages/setting.ejs', {
     title: "setting",
-    user: req.session.user
+    mongoosLogin: req.session.mongoosLogin
   });
 }
 app.use(function (req, res, next) {

@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <% include ../partials/head.ejs %>
-</head>
-<body id="start" class="inloggen">
-    <!--Header begin-->
-    <header>
-        <!-- <% include ../partials/nav.ejs %> -->
-    </header>
-    <!--Header end-->
-    <main>
 
-        <section>
-            <form action="/users/add" id='registeren_form' method="POST">
+<head>
+  <% include ../partials/head.ejs %>
+</head>
+
+<body id="start" class="inloggen">
+  <!--Header begin-->
+  <header>
+    <!-- <% include ../partials/nav.ejs %> -->
+  </header>
+  <!--Header end-->
+  <main>
+
+    <section>
+      <!-- <form action="/users/upload" id='upload_pic' method="POST" enctype="multipart/form-data">
               <fieldset>
-                <legend>Registeren</legend>
-                <label> Studnr.
-                  <input type="text" name="studenten_nummer" required  >
-                </label>
-                <label> Wachtwoord
-                  <input type="password" name="password" minlength="6" placeholder="minimaal 6 characters" required  >
-                </label>
-                <label> Voornaam
-                  <input type="name" name="first_name" required  >
-                </label>
-                <label> Leeftijd
-                  <input type="number" name="leeftijd" minlength="2" required >
-                  </label>
-                <label> Opleiding
-                  <input type="text" name="opleiding" required  >
-                </label>
-             
-                <label> Informatie over jezelf
-                    <textarea name="overJezelf" form="registeren_form" rows="4" > </textarea>
-            
+              <legend>Foto uploaden</legend>
+              <%= typeof msg != 'undefined' ? msg : ''  %>
+              <label> Profile foto
+                  <input type="file" name="profile-pic" required  >
                 </label>
               </fieldset>
-   
-              <button type="submit" value="submit">register</button>
-            </form>
-            
-        </section>
-    </main>
+              <button type="submit" value="submit">Upload profile foto</button>
+            </form> -->
+
+      <form action="/users/add" id='registeren_form' method="POST">
+        <fieldset>
+          <legend>Registeren</legend>
+          <label> Studnr.
+            <input type="text" name="studenten_nummer" required>
+          </label>
+          <label> Wachtwoord
+            <input type="password" name="password" minlength="6" placeholder="minimaal 6 characters" required>
+          </label>
+          <label> Voornaam
+            <input type="name" name="first_name" required>
+          </label>
+          <label> Leeftijd
+            <input type="number" name="leeftijd" minlength="2" required>
+          </label>
+          <label> Opleiding
+            <input type="text" name="opleiding" required>
+          </label>
+          <label> Informatie over jezelf
+            <textarea name="overJezelf" form="registeren_form" rows="4"> </textarea>
+          </label>
+        </fieldset>
+        <button type="submit" value="submit">register</button>
+      </form>
+      \
+
+    </section>
+  </main>
 </body>
+
 </html>

@@ -271,7 +271,6 @@ function edit(req, res) {
 }
 //Userprofile PAGE
 app.get("/userprofile", userprofile);
-
 function userprofile(req, res) {
   db.users.find(function (err, docs) {
     console.log(docs);
@@ -284,7 +283,6 @@ function userprofile(req, res) {
 }
 
 //-------------------------
-
 
 app.use(function (req, res, next) {
   res.status(404).render('not-found');

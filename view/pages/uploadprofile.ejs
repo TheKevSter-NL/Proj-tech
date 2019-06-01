@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <% include ../partials/head.ejs %>
+</head>
+<body id="start" class="inloggen">
+    <!--Header begin-->
+    <header>
+        <!-- <% include ../partials/nav.ejs %> -->
+    </header>
+    <!--Header end-->
+    <main>
+
+        <section>
+            <form action="/users/upload" id='upload_pic' method="POST" enctype="multipart/form-data">
+              <fieldset>
+              <legend>Foto uploaden</legend>
+              <%= typeof msg != 'undefined' ? msg : ''  %>
+              <label> Profile foto
+                  <input type="file" name="profile-pic" required  >
+                </label>
+              </fieldset>
+              <button type="submit" value="submit">Upload profile foto</button>
+            </form>
+
+            
+        </section>
+    </main>
+</body>
+</html>

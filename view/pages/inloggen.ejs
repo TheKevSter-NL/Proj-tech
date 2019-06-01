@@ -14,14 +14,14 @@
         <section>
             <p><img src="images/logo/logo-active.png" alt="Logo"></p>
             
-            <form action="/index" method="GET">
+            <form action="/users/signin" method="POST">
               <fieldset>
                 <legend>Inloggen</legend>
-                <label> Email
-                          <input type="email" placeholder="mail@mail.nl" required>
+                <label> Studnr
+                          <input type="text" name="studenten_nummer" placeholder="0000000" required>
                         </label>
                 <label> Wachtwoord
-                    <input type="password" minlength="6" placeholder="minimaal 6 characters" required>
+                    <input type="password" name="password" minlength="6" placeholder="minimaal 6 characters" required>
                     </label>
               </fieldset>
               <!-- <i>

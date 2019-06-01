@@ -15,8 +15,14 @@
             <form action="/users/edit" id='edit_form' method="POST">
               <fieldset>
                 <legend>Profile Aanpassen</legend>
+                <label> Studnr.
+                    <input type="text" name="studenten_nummer" required>
+                  </label>
+                  <label> Wachtwoord
+                    <input type="password" name="password" minlength="6" placeholder="minimaal 6 characters" required>
+                  </label>
                 <label> Voornaam
-                  <input type="name" name="first_name" required  >
+                  <input type="name" name="first_name" required >
                 </label>
                 <label> Leeftijd
                   <input type="number" name="leeftijd" minlength="2" required >

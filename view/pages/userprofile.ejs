@@ -19,13 +19,13 @@
         <li>
           <article>
             <p><a href="/edit"><img src="images/iconen/edit2.png" alt="edit icon"></a></p>
-            <img src="images/afbeeldingen/userprofile.jpeg" alt="Profiel foto">
+            <img src="uploads/profile-pic.jpeg" alt="Profiel foto">
 
             <footer>
               <ul>
                 <li>
-                  <% users.forEach(function(user){ %>
-                  <h1><%=user.first_name %></h1>
+                  <% users.find(function(_id){ %>
+                  <h1><%=_id.first_name %></h1>
                   <% }) %>
                 </li>
                 <!-- <li>
@@ -41,46 +41,40 @@
     <section class="profile-info">
       <article>
         <p>
-          <% users.forEach(function(user){ %>
+          <% users.find(function(_id){ %>
           <b>Leeftijd:</b>
-          <i><%=user.leeftijd %></i>
+          <i><%=_id.leeftijd %></i>
           <% }) %>
         </p>
         <p>
-          <% users.forEach(function(user){ %>
-          <b>Volg opleiding:</b> <i><%=user.opleiding %></i>
+          <% users.find(function(_id){ %>
+          <b>Volg opleiding:</b> <i><%=_id.opleiding %></i>
           <% }) %>
         </p>
 
         <hr />
       </article>
       <article>
-        <% users.forEach(function(user){ %>
-        <h2>Over <%=user.first_name %></h2>
+        <% users.find(function(_id){ %>
+        <h2>Over <%=_id.first_name %></h2>
         <% }) %>
-        <% users.forEach(function(user){ %>
-        <p><%=user.overJezelf %></p>
+        <% users.find(function(_id){ %>
+        <p><%=_id.overJezelf %></p>
         <% }) %>
         <hr />
       </article>
 
     </section>
+    <section></section>
     <section class="user_profile_delete">
-<<<<<<< HEAD
-     
+      <a href=/log-out>Log out</a>
+      <hr>
         <h3>Mijn account wissen</h3>
         <a href="/users/delete"> Wis Mijn Account</a>
         
 
-=======
-      
-        <h3>Mijn account wissen</h3>
-      <form action="/users/delete" id='registeren_form' method="POST">
-        
-
-        <button type="submit" value="submit">Wis Mijn Account</button>
+  
       </form>
->>>>>>> 93598af32ce3229d9c36f177b806d472ebbaf209
     </section>
 
   </main>

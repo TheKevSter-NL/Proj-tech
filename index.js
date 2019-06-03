@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 const mongoosLogin = require('./mongoose');
 const multer = require('multer');
 // const argon2 = require('argon2');
-set.DATABASE = postgresql-opaque-53345;
+app.set (DATABASE = postgresql-opaque-53345);
 //view Engines
 app.set('view engine', 'ejs');
 app.set('views', 'view');

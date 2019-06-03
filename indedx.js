@@ -7,20 +7,14 @@ const session = require('express-session');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const MongoClient = require('mongodb').MongoClient;
+const mongo = require('mongodb').MongoClient;
 const mongojs = require('mongojs');
 const db = mongojs('datingapp', ['users']);
-const port = process.env.PORT || 5000;
+const port = process.env.DB_PORT || 5000;
 const mongoosLogin = require('./mongoose');
 const multer = require('multer');
 // const argon2 = require('argon2');
-const uri = "mongodb+srv://kevster:Start123@users-mbdaf.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+
 //view Engines
 app.set('view engine', 'ejs');
 app.set('views', 'view');

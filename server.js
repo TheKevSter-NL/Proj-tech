@@ -35,12 +35,12 @@ app.use(session({
   host: process.env.DB_HOST,
   db_name: process.env.DB_NAME,
   secret: process.env.SESSION_SECRET,
-  port: process.env.PORT,
+  port: process.env.DB_PORT,
   maxAge: 24 * 60 * 60,
   secure: false
 
 }));
-app.listen(process.env.PORT);
+app.listen(process.env.DB_PORT);
 
 // Storage Engine
 const storage = multer.diskStorage({

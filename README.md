@@ -95,10 +95,10 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-1 Google
-1 Github
-1 Stack overflow
-1 Youtube 
-1 Lectures/labs from school
-1 Classmates that helped me
+* Google
+* Github
+* Stack overflow
+* Youtube 
+* Lectures/labs from school
+* Classmates that helped me
 

@@ -79,7 +79,9 @@ then go to your browser and go to your hostname and port number to see the app. 
 http://localhost:5000
 ```
 If you see a start screen then you are set 
-<img width="684" alt="20e6a6c7611c4983ff8b34dee3d9eb87" src="https://user-images.githubusercontent.com/43183768/58897733-468af000-86f9-11e9-98b3-a831679c90d2.png">
+
+![18944683edcba87607fe287a9b40d5e2](https://user-images.githubusercontent.com/43183768/58903902-c4a1c380-8706-11e9-83ca-61ecb8906d18.jpg)
+
 
 
 ## Style sheets
@@ -89,5 +91,14 @@ The CSS of all the pages are in one CSS file. All coding for each pages are sepa
 TheKevSter35 | TECH 4
 
 ## license
-
 This project is licensed under the MIT License
+
+## Acknowledgments
+
+1 Google
+1 Github
+1 Stack overflow
+1 Youtube 
+1 Lectures/labs from school
+1 Classmates that helped me
+

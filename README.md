@@ -67,6 +67,7 @@ In mongoDB create a db and a collection and change that in de server file te con
 var db = mongojs('NAME-OF-YOUR-DATABASE', ['NAME-OF-YOUR-COLLECTION']);
 ```
 Collection Records 
+
 <img width="689" alt="20e6a6c7611c4983ff8b34dee3d9eb87" src="https://user-images.githubusercontent.com/43183768/58897992-e34d8d80-86f9-11e9-8038-323b562c9fb7.png">
 
 

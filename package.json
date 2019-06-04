@@ -5,24 +5,25 @@
   "main": "index.js",
   "scripts": {
     "start": "node",
-    "dev": "nodemon index.js"
+    "dev": "nodemon server.js"
   },
   "author": "Kevin Curi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "argon2": "^0.23.0",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "boilerplate": "^0.6.1",
     "concat-stream": "^2.0.0",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "express-session": "^1.16.1",
     "handlebars": "^4.1.2",
     "mongodb": "^3.2.6",
     "mongojs": "^2.6.0",
     "mongoose": "^5.5.11",
-    "multer": "^1.4.1"
+    "multer": "^1.4.1",
+    "passport-npm": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

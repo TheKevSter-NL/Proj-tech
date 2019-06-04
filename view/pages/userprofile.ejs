@@ -24,8 +24,8 @@
             <footer>
               <ul>
                 <li>
-                  <% users.find(function(_id){ %>
-                  <h1><%=_id.first_name %></h1>
+                  <% users.find(function(users){ %>
+                  <h1><%=users.first_name %></h1>
                   <% }) %>
                 </li>
                 <!-- <li>
@@ -41,25 +41,25 @@
     <section class="profile-info">
       <article>
         <p>
-          <% users.find(function(_id){ %>
+          <% users.find(function(users){ %>
           <b>Leeftijd:</b>
-          <i><%=_id.leeftijd %></i>
+          <i><%=users.leeftijd %></i>
           <% }) %>
         </p>
         <p>
-          <% users.find(function(_id){ %>
-          <b>Volg opleiding:</b> <i><%=_id.opleiding %></i>
+          <% users.find(function(users){ %>
+          <b>Volg opleiding:</b> <i><%=users.opleiding %></i>
           <% }) %>
         </p>
 
         <hr />
       </article>
       <article>
-        <% users.find(function(_id){ %>
-        <h2>Over <%=_id.first_name %></h2>
+        <% users.find(function(users){ %>
+        <h2>Over <%=users.first_name %></h2>
         <% }) %>
-        <% users.find(function(_id){ %>
-        <p><%=_id.overJezelf %></p>
+        <% users.find(function(users){ %>
+        <p><%=users.overJezelf %></p>
         <% }) %>
         <hr />
       </article>

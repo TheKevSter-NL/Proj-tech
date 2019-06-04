@@ -2,19 +2,19 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 require('dotenv').config();
-const express = require('express');
-const session = require('express-session');
-const app = express();
-const bodyParser = require('body-parser');
-const path = require('path');
-const mongo = require('mongodb').MongoClient;
-const mongojs = require('mongojs');
-const db = mongojs('datingapp', ['users']);
-const port = process.env.PORT || 5000;
-const mongoosLogin = require('./mongoose');
-const multer = require('multer');
-// const argon2 = require('argon2');
-app.set (DATABASE = postgresql-opaque-53345);
+var express = require('express');
+var session = require('express-session');
+var app = express();
+var bodyParser = require('body-parser');
+var path = require('path');
+var mongo = require('mongodb').MongoClient;
+var mongojs = require('mongojs');
+var db = mongojs('datingapp', ['users']);
+var port = process.env.PORT || 5000;
+var mongoosLogin = require('./mongoose');
+var multer = require('multer');
+
+
 //view Engines
 app.set('view engine', 'ejs');
 app.set('views', 'view');
@@ -43,7 +43,7 @@ app.use(session({
 app.listen(process.env.DB_PORT);
 
 // Storage Engine
-const storage = multer.diskStorage({
+var storage = multer.diskStorage({
   destination: './static/uploads/',
   filename: function (req, file, cb) {
     cb(null, file.fieldname + path.extname(file.originalname));
@@ -51,7 +51,7 @@ const storage = multer.diskStorage({
 });
 // upload
 
-const upload = multer({
+var upload = multer({
   storage: storage
 }).single('profile-pic');
 
@@ -170,7 +170,7 @@ app.get("/chats", function (req, res) {
     return res.status(401).send(),
       res.redirect('inloggen');
   }
-  res.render('pages/chat.ejs', {
+  res.render('pages/chats.ejs', {
     title: "Chat",
     mongoosLogin: req.session.mongoosLogin
   });

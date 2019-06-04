@@ -53,7 +53,7 @@ dependencies that are used are:
     "multer": "^1.4.1",
     "passport-npm": "^2.0.0"
 ```
-Fot deployment i used ''Heroku''. But there are also other options for deployment this app.
+For deployment i used ''Heroku''. But there are also other options for deployment this app.
 
 To make sure that the master-branch is up-to-date, use the pull command 
 

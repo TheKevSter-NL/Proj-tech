@@ -227,7 +227,7 @@ app.get("/setting", function (req, res) {//if no session active then redirect to
 app.get("/register", register);
 //find the records and use them 
 function register(req, res) {
-  db.users.find(function (docs) { em 
+  db.users.find(function (docs) { 
     res.render('pages/register.ejs', {
       title: "register",
       users: docs

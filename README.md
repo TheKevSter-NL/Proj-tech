@@ -22,7 +22,7 @@ A MongoDB Installation (local, cloud or server)
 ```
 
 ## Build with
-The app is build with de nodejs express Framework and the EJS page generator to generate pages it also works with HTML.  
+The app is build with tHE nodejs express Framework and the EJS page generator to generate pages it also works with HTML.  
 
 
 ## Installation  
@@ -61,7 +61,7 @@ To make sure that the master-branch is up-to-date, use the pull command
 git pull https://github.com/TheKevSter35/Proj-tech.git master
 ```
 
-In mongoDB create a db and a collection and change that in de server file te connect with your mongoDB
+In mongoDB create a db and a collection and change that in the server file te connect with your mongoDB
 
 ```
 var db = mongojs('NAME-OF-YOUR-DATABASE', ['NAME-OF-YOUR-COLLECTION']);

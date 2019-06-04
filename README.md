@@ -53,7 +53,7 @@ dependencies that are used are:
     "multer": "^1.4.1",
     "passport-npm": "^2.0.0"
 ```
-Fot deployment i used ''Heroku''. But there are also other options for deployment this app.
+For deployment i used ''Heroku''. But there are also other options for deployment this app.
 
 To make sure that the master-branch is up-to-date, use the pull command 
 
@@ -67,6 +67,7 @@ In mongoDB create a db and a collection and change that in de server file te con
 var db = mongojs('NAME-OF-YOUR-DATABASE', ['NAME-OF-YOUR-COLLECTION']);
 ```
 Collection Records 
+
 <img width="689" alt="20e6a6c7611c4983ff8b34dee3d9eb87" src="https://user-images.githubusercontent.com/43183768/58897992-e34d8d80-86f9-11e9-8038-323b562c9fb7.png">
 
 

@@ -82,7 +82,15 @@ If you see a start screen then you are set
 
 ![18944683edcba87607fe287a9b40d5e2](https://user-images.githubusercontent.com/43183768/58903902-c4a1c380-8706-11e9-83ca-61ecb8906d18.jpg)
 
+## Create a new HTML file
+1. Create a new EJS file in de view directory 
+2. Include the partials 
+3. Write HTML inside the EJS file
+4. Inside the server file add write a new render function. Or copy one existing render function en and change the view name for example 
 
+```
+.get("/NEW_EJS_FILE", function (req, res)
+```
 
 ## Style sheets
 The CSS of all the pages are in one CSS file. All coding for each pages are separated from each other in the CSS file. 

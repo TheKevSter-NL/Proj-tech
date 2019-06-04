@@ -4,7 +4,7 @@ This is a dating app created for students that want to meet new people that are 
 
 ![df5d3c250d5108d9544ca2400799eb0e](https://user-images.githubusercontent.com/43183768/58423702-05119980-8096-11e9-905e-ad9eee51e1d4.jpg)
 
-With the app you can make a account by filling in form , login to your account and edit your account for example a new Bio or a new profile picture. 
+With the app you can make a account, login to your account and edit your account for example a new Bio or a new profile picture. 
 
 
 ## Getting Started
